@@ -6,10 +6,9 @@ public class AddLocation : MonoBehaviour
 {
     public Location[] Locations;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        AddToLocationManager();    
+        AddToLocationManager();
     }
 
     public void AddToLocationManager()
