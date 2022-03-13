@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AIStats), typeof(Inventory))]
+[RequireComponent(typeof(AIStats))]
 public class AIBrain : MonoBehaviour
 {
+    public Action currentAction;
     public List<Action> Actions;
     AIStats stats;
-    Action currentAction;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,8 @@ public class AIBrain : MonoBehaviour
             currentAction = ChooseBestAction();
             currentAction.InitialiseAction(stats);
         }
+
+        currentAction.ExecuteAction(stats);
     }
 
     Action ChooseBestAction()

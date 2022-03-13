@@ -23,5 +23,7 @@ public class ModifyStatConsequence : Consequence
     public override void ExecuteConsequence(AIStats stats)
     {
         stats.FindStat(Stat).Value += (int)Type;
+
+        stats.FindStat(Stat).Value = Mathf.Clamp(stats.FindStat(Stat).Value, 0, 100);
     }
 }

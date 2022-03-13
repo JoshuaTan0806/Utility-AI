@@ -26,6 +26,7 @@ public class StatManager : MonoBehaviour
     private void Update()
     {
         SelectUnit();
+        UpdateStats();
     }
 
     void SelectUnit()
@@ -55,8 +56,21 @@ public class StatManager : MonoBehaviour
 
         for (int i = 0; i < SelectedUnit.stats.Count; i++)
         {
-            GameObject G = Instantiate(StatUIPrefab, StatUIHolder.transform.GetChild(0));
-            G.GetComponent<TextMeshProUGUI>().text = SelectedUnit.stats[i].Name + ": " + SelectedUnit.stats[i].Value;
+            Instantiate(StatUIPrefab, StatUIHolder.transform.GetChild(0));
+        }
+    }
+
+    void UpdateStats()
+    {
+        if (SelectedUnit == null)
+            return;
+
+        for (int i = 0; i < SelectedUnit.stats.Count; i++)
+        {
+            if (StatUIHolder == null)
+                return;
+
+            StatUIHolder.transform.GetChild(0).GetChild(i).GetComponent<TextMeshProUGUI>().text = SelectedUnit.stats[i].Name + ": " + SelectedUnit.stats[i].Value;
         }
     }
 

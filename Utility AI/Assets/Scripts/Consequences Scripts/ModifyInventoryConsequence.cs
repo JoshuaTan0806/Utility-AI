@@ -17,8 +17,8 @@ public class ModifyInventoryConsequence : Consequence
     public override void ExecuteConsequence(AIStats stats)
     {
         if (Type == Types.AddItem)
-            stats.GetComponent<Inventory>().AddItem(Item);
+            stats.Inventory.AddItem(Item);
         else if(Type == Types.RemoveItem)
-            stats.GetComponent<Inventory>().RemoveItem(Item);
+            stats.Inventory.RemoveItem(Item);
     }
 }

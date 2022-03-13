@@ -9,6 +9,6 @@ public class HasItemConsideration : Consideration
 
     public override float ScoreConsideration(AIStats stats)
     {
-        return stats.GetComponent<Inventory>().HasItem(Item) ? 1 : 0;
+        return stats.Inventory.HasItem(Item) ? 1 : 0;
     }
 }

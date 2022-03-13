@@ -6,7 +6,7 @@ using UnityEngine;
 public class Stat : ScriptableObject
 {
     public string Name;
-    public float Value;
+    [Range(0, 100)] public float Value;
 
     public void RandomiseStat()
     {

@@ -12,6 +12,7 @@ public class MoveToLocationAction : Action
     {
         base.InitialiseAction(stats);
         stats.Location = null;
+        destination = stats.FindClosestLocation(Location);
     }
 
     public override void ExecuteAction(AIStats stats)

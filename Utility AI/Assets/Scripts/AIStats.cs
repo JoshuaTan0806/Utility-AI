@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Inventory))]
 public class AIStats : MonoBehaviour
 {
     public List<Stat> stats = new List<Stat>();
     public Transform Location;
+    [HideInInspector] public Inventory Inventory;
 
     private void Awake()
     {
@@ -14,6 +16,8 @@ public class AIStats : MonoBehaviour
             StatManager.instance.Stats[i].RandomiseStat();
             stats.Add(Instantiate(StatManager.instance.Stats[i]));
         }
+
+        Inventory = GetComponent<Inventory>();
     }
 
     public Stat FindStat(Stat stat)
@@ -41,5 +45,27 @@ public class AIStats : MonoBehaviour
         }
 
         return false; 
+    }
+
+    public Transform FindClosestLocation(Location location)
+    {
+        if (LocationManager.instance.locations[location] == null)
+            return null;
+
+        float ClosestDistance = Mathf.Infinity;
+        Transform ClosestTransform = null;
+
+        for (int i = 0; i < LocationManager.instance.locations[location].Count; i++)
+        {
+            float Distance = Vector3.Distance(transform.position, LocationManager.instance.locations[location][i].position);
+
+            if (Distance < ClosestDistance)
+            {
+                ClosestDistance = Distance;
+                ClosestTransform = LocationManager.instance.locations[location][i];
+            }
+        }
+
+        return ClosestTransform;
     }
 }

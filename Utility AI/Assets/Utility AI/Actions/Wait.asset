@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   considerations:
   - {fileID: 11400000, guid: 83e8ee7707275da4ab202c395597d32e, type: 2}
-  consequences: []
-  TimeToWait: 0
+  consequences:
+  - {fileID: 11400000, guid: d5721925ce864b043b07c58fd6bd6b89, type: 2}
+  - {fileID: 11400000, guid: facfdc197261dba42964318b3b553f5c, type: 2}
+  TimeToWait: 1
