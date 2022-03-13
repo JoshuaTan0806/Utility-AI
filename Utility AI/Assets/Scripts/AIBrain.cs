@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AIStats))]
+[RequireComponent(typeof(AIStats), typeof(Inventory))]
 public class AIBrain : MonoBehaviour
 {
     public List<Action> Actions;

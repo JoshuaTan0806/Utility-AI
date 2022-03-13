@@ -16,7 +16,8 @@ public class Action : ScriptableObject
 
     public virtual void ExecuteAction(AIStats stats)
     {
-
+        if (IsConditionMet(stats))
+            CompleteAction(stats);
     }
 
     public virtual void CompleteAction(AIStats stats)
@@ -34,6 +35,12 @@ public class Action : ScriptableObject
         IsComplete = true;
     }
 
+    public virtual bool IsConditionMet(AIStats stats)
+    {
+        return false;
+    }
+
+
     public virtual bool IsActionComplete()
     {
         return IsComplete;
@@ -41,11 +48,13 @@ public class Action : ScriptableObject
 
     public virtual float ScoreAction(AIStats stats)
     {
+        float Score = 1;
+
         for (int i = 0; i < considerations.Count; i++)
         {
-            considerations[i].ScoreConsideration(stats);
+            Score *= considerations[i].ScoreConsideration(stats);
         }
 
-        return 0;
+        return Score;
     }
 }
